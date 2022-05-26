@@ -16,7 +16,6 @@
     "import",
     "eslint-comments",
     "functional",
-    "jest",
     "@typescript-eslint"
   ],
   "extends": [
@@ -26,8 +25,7 @@
     "plugin:import/typescript",
     "plugin:functional/lite",
     "prettier",
-    "prettier/@typescript-eslint",
-    "plugin:jest/recommended"
+    "prettier/@typescript-eslint"
   ],
   "globals": {
     "console": true,
