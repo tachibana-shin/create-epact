@@ -4,7 +4,7 @@
   "author": "Tachibana Shin <45375496+tachibana-shin@users.noreply.github.com>",
   "main": "dist/index.mjs",
   "bin": {
-    "create-epact": "./dist/index.js"
+    "create-epact": "./dist/index.mjs"
   },
   "types": "dist/index.d.ts",
   "files": [
