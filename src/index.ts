@@ -65,7 +65,7 @@ async function getMetaTemplate(templateName?: string): Promise<DataRepo> {
 
   const { data: listTemplates } = await axios
     .get<readonly DataRepo[]>(
-      "https://api.github.com/users/express-templates/repos"
+      "https://api.github.com/users/epact-templates/repos"
     )
     .then((res) => {
       spinner.stop();
