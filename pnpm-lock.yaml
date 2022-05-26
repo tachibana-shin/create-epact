@@ -32,7 +32,6 @@ specifiers:
   path-cross: ^0.0.3
   prettier: ^2.1.1
   prompts: ^2.4.2
-  rollup: ^2.45.2
   rollup-plugin-commonjs: ^10.1.0
   rollup-plugin-dts: ^4.0.1
   rollup-plugin-esbuild: ^4.6.0
@@ -76,11 +75,10 @@ devDependencies:
   npm-run-all: 4.1.5
   path-cross: 0.0.3
   prettier: 2.6.2
-  rollup: 2.74.1
-  rollup-plugin-commonjs: 10.1.0_rollup@2.74.1
-  rollup-plugin-dts: 4.2.2_durm56y4qsrp7annnznb67puce
-  rollup-plugin-esbuild: 4.9.1_qkxud6zbs4dvngtj4cpeldoswi
-  rollup-plugin-node-resolve: 5.2.0_rollup@2.74.1
+  rollup-plugin-commonjs: 10.1.0
+  rollup-plugin-dts: 4.2.2_typescript@4.7.2
+  rollup-plugin-esbuild: 4.9.1_esbuild@0.13.15
+  rollup-plugin-node-resolve: 5.2.0
   tsup: 6.0.1_typescript@4.7.2
   tsx: 3.4.2
   typescript: 4.7.2
@@ -3903,7 +3901,7 @@ packages:
     dependencies:
       glob: 7.2.3
 
-  /rollup-plugin-commonjs/10.1.0_rollup@2.74.1:
+  /rollup-plugin-commonjs/10.1.0:
     resolution: {integrity: sha512-jlXbjZSQg8EIeAAvepNwhJj++qJWNJw1Cl0YnOqKtP5Djx+fFGkp3WRh+W0ASCaFG5w1jhmzDxgu3SJuVxPF4Q==}
     deprecated: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-commonjs.
     peerDependencies:
@@ -3913,11 +3911,10 @@ packages:
       is-reference: 1.2.1
       magic-string: 0.25.9
       resolve: 1.22.0
-      rollup: 2.74.1
       rollup-pluginutils: 2.8.2
     dev: true
 
-  /rollup-plugin-dts/4.2.2_durm56y4qsrp7annnznb67puce:
+  /rollup-plugin-dts/4.2.2_typescript@4.7.2:
     resolution: {integrity: sha512-A3g6Rogyko/PXeKoUlkjxkP++8UDVpgA7C+Tdl77Xj4fgEaIjPSnxRmR53EzvoYy97VMVwLAOcWJudaVAuxneQ==}
     engines: {node: '>=v12.22.11'}
     peerDependencies:
@@ -3925,13 +3922,12 @@ packages:
       typescript: ^4.1
     dependencies:
       magic-string: 0.26.2
-      rollup: 2.74.1
       typescript: 4.7.2
     optionalDependencies:
       '@babel/code-frame': 7.16.7
     dev: true
 
-  /rollup-plugin-esbuild/4.9.1_qkxud6zbs4dvngtj4cpeldoswi:
+  /rollup-plugin-esbuild/4.9.1_esbuild@0.13.15:
     resolution: {integrity: sha512-qn/x7Wz9p3Xnva99qcb+nopH0d2VJwVnsxJTGEg+Sh2Z3tqQl33MhOwzekVo1YTKgv+yAmosjcBRJygMfGrtLw==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -3944,12 +3940,11 @@ packages:
       esbuild: 0.13.15
       joycon: 3.1.1
       jsonc-parser: 3.0.0
-      rollup: 2.74.1
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /rollup-plugin-node-resolve/5.2.0_rollup@2.74.1:
+  /rollup-plugin-node-resolve/5.2.0:
     resolution: {integrity: sha512-jUlyaDXts7TW2CqQ4GaO5VJ4PwwaV8VUGA7+km3n6k6xtOEacf61u0VXwN80phY/evMcaS+9eIeJ9MOyDxt5Zw==}
     deprecated: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-node-resolve.
     peerDependencies:
@@ -3959,7 +3954,6 @@ packages:
       builtin-modules: 3.3.0
       is-module: 1.0.0
       resolve: 1.22.0
-      rollup: 2.74.1
       rollup-pluginutils: 2.8.2
     dev: true
 
