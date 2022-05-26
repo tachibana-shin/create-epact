@@ -96,7 +96,7 @@ declare const data: {
   };
   allow_forking: boolean;
   is_template: boolean;
-  topics: never[];
+  topics: string[];
   visibility: string;
   forks: number;
   open_issues: number;
