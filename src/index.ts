@@ -63,13 +63,17 @@ async function getMetaTemplate(templateName?: string): Promise<DataRepo> {
 
   const spinner = ora("Fetching list templates from github...").start();
 
-  const { data: listTemplates } = await axios
+  const listTemplates = await axios
     .get<readonly DataRepo[]>(
       "https://api.github.com/users/epact-templates/repos"
     )
     .then((res) => {
       spinner.stop();
-      return res;
+      return res.data.filter(repo => {
+        if (repo.topics.includes("ignore-epact")) return false;
+
+        return true;
+      });
     })
     .catch((err) => {
       spinner.fail("Fetch list templates failed: " + chalk.red(err.message));
