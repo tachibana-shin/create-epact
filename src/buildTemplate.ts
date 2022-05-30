@@ -1,5 +1,5 @@
 import { readFile } from "fs/promises";
-import { basename } from "path";
+import { basename, join, relative } from "path";
 
 import chalk from "chalk";
 import Handlebars from "handlebars";
@@ -101,17 +101,19 @@ export default async function buildTemplate(
       `Rendering project from template "${basename(template)}"`
     ).start();
 
+    const metaFileBasename = metaFile ? basename(metaFile) : "";
+
     Metalsmith(template)
       .clean(false)
       .source(".")
       .destination(to)
-      .ignore([...(metaFile ? [metaFile] : [])])
       .use((files, metalsmith, callback) => {
         const localMetadata = metalsmith.metadata();
 
         // eslint-disable-next-line functional/no-loop-statement
         for (const [file, { contents }] of Object.entries(files)) {
           if (
+            file === metaFileBasename ||
             ignore.some((match) =>
               minimatch(file, match, {
                 dot: true,
@@ -124,15 +126,17 @@ export default async function buildTemplate(
             continue;
           }
 
-          if (file === "_github") {
+          if (file.startsWith("_github/")) {
             // eslint-disable-next-line functional/immutable-data
-            files[".github"] = files[file];
+            files[join(".github", relative("_github", file))] = files[file];
             // eslint-disable-next-line functional/immutable-data
             delete files[file];
           }
 
           if (file.endsWith(".hbs") || file.endsWith(".handlebars")) {
             // compile
+            spinRender.info(chalk.gray("render file: " + file));
+
             const compiled = Handlebars.compile(contents.toString())({
               extend,
               ...answers,

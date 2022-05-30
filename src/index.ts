@@ -70,7 +70,7 @@ async function getMetaTemplate(templateName?: string): Promise<DataRepo> {
     .then((res) => {
       spinner.stop();
       return res.data.filter(repo => {
-        if (repo.topics.includes("ignore-epact")) return false;
+        if (repo.topics.includes("epact-ignore")) return false;
 
         return true;
       });

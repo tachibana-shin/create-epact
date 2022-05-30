@@ -32,10 +32,6 @@ specifiers:
   path-cross: ^0.0.3
   prettier: ^2.1.1
   prompts: ^2.4.2
-  rollup-plugin-commonjs: ^10.1.0
-  rollup-plugin-dts: ^4.0.1
-  rollup-plugin-esbuild: ^4.6.0
-  rollup-plugin-node-resolve: ^5.2.0
   tsup: ^6.0.1
   tsx: ^3.4.2
   typescript: ^4.6.2
@@ -75,10 +71,6 @@ devDependencies:
   npm-run-all: 4.1.5
   path-cross: 0.0.3
   prettier: 2.6.2
-  rollup-plugin-commonjs: 10.1.0
-  rollup-plugin-dts: 4.2.2_typescript@4.7.2
-  rollup-plugin-esbuild: 4.9.1_esbuild@0.13.15
-  rollup-plugin-node-resolve: 5.2.0
   tsup: 6.0.1_typescript@4.7.2
   tsx: 3.4.2
   typescript: 4.7.2
@@ -91,15 +83,6 @@ packages:
     dependencies:
       '@babel/highlight': 7.17.12
     dev: true
-
-  /@babel/code-frame/7.16.7:
-    resolution: {integrity: sha512-iAXqUn8IIeBTNd72xsFlgaXHkMBMt6y4HJp1tIaK465CWLT/fG1aqB7ykr95gHHmlBdGbFeWWfyB4NJJ0nmeIg==}
-    engines: {node: '>=6.9.0'}
-    requiresBuild: true
-    dependencies:
-      '@babel/highlight': 7.17.12
-    dev: true
-    optional: true
 
   /@babel/helper-validator-identifier/7.16.7:
     resolution: {integrity: sha512-hsEnFemeiW4D08A5gUAZxLBTXpZ39P+a+DGDsHw1yxqyQ/jzFEnxf5uTEGp+3bzAbNOxU1paTgYS4ECU/IgfDw==}
@@ -464,14 +447,6 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@rollup/pluginutils/4.2.1:
-    resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
-    engines: {node: '>= 8.0.0'}
-    dependencies:
-      estree-walker: 2.0.2
-      picomatch: 2.3.1
-    dev: true
-
   /@sindresorhus/is/0.7.0:
     resolution: {integrity: sha512-ONhaKPIufzzrlNbqtWFFd+jlnemX6lJAgq9ZeiZtS7I1PIf/la7CW4m83rTXRnVnsMbW2k56pGYu7AUFJD9Pow==}
     engines: {node: '>=4'}
@@ -499,10 +474,6 @@ packages:
       '@types/decompress': 4.2.4
       '@types/got': 8.3.6
       '@types/node': 17.0.35
-    dev: true
-
-  /@types/estree/0.0.51:
-    resolution: {integrity: sha512-CuPgU6f3eT/XgKKPqKd/gLZV1Xmvf1a2R5POBOGQa6uv82xpls89HU5zKeVoyR8XzHd1RGNOlQlvUe3CFkjWNQ==}
     dev: true
 
   /@types/got/8.3.6:
@@ -547,12 +518,6 @@ packages:
 
   /@types/prompts/2.0.14:
     resolution: {integrity: sha512-HZBd99fKxRWpYCErtm2/yxUZv6/PBI9J7N4TNFffl5JbrYMHBwF25DjQGTW3b3jmXq+9P6/8fCIb2ee57BFfYA==}
-    dependencies:
-      '@types/node': 17.0.35
-    dev: true
-
-  /@types/resolve/0.0.8:
-    resolution: {integrity: sha512-auApPaJf3NPfe18hSoJkp8EbZzer2ISk7o8mCC3M9he/a04+gbMF97NkpD2S8riMGvm4BMRI59/SZQSaLTKpsQ==}
     dependencies:
       '@types/node': 17.0.35
     dev: true
@@ -897,11 +862,6 @@ packages:
       base64-js: 1.5.1
       ieee754: 1.2.1
     dev: false
-
-  /builtin-modules/3.3.0:
-    resolution: {integrity: sha512-zhaCDicdLuWN5UbN5IMnFqNMhNfo919sH85y2/ea+5Yg9TsTkeZxpL+JLbp6cgYFS4sRLp3YV4S6yDuqVWHYOw==}
-    engines: {node: '>=6'}
-    dev: true
 
   /bulk-replace/0.0.1:
     resolution: {integrity: sha512-IxLEnfsCYLjlpf6mG7SWpWgA4A8IAT5dAX3FxXHFn+6FTLf3ums771elQ74sj1BCOVanBf6esu0rEC6zgwfmIg==}
@@ -1499,10 +1459,6 @@ packages:
 
   /es-module-lexer/0.10.5:
     resolution: {integrity: sha512-+7IwY/kiGAacQfY+YBhKMvEmyAJnw5grTUgjG85Pe7vcUI/6b7pZjZG8nQ7+48YhzEAEqrEgD2dCz/JIK+AYvw==}
-    dev: true
-
-  /es-module-lexer/0.9.3:
-    resolution: {integrity: sha512-1HQ2M2sPtxwnvOvT1ZClHyQDiggdNjURWpY2we6aMKCQiUVxTmVs2UYPLIrD84sS+kMdUwfBSylbJPwNnBrnHQ==}
     dev: true
 
   /es-shim-unscopables/1.0.0:
@@ -2338,14 +2294,6 @@ packages:
     engines: {node: '>=4.0'}
     dev: true
 
-  /estree-walker/0.6.1:
-    resolution: {integrity: sha512-SqmZANLWS0mnatqbSfRP5g8OXZC12Fgg1IwNtLsyHDzJizORW4khDfjPqJZsemPWBB2uqykUah5YpQ6epsqC/w==}
-    dev: true
-
-  /estree-walker/2.0.2:
-    resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
-    dev: true
-
   /esutils/2.0.3:
     resolution: {integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==}
     engines: {node: '>=0.10.0'}
@@ -2953,10 +2901,6 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /is-module/1.0.0:
-    resolution: {integrity: sha1-Mlj7afeMFNW4FdZkM2tM/7ZEFZE=}
-    dev: true
-
   /is-natural-number/4.0.1:
     resolution: {integrity: sha1-q5124dtM7VHjXeDHLr7PCfc0zeg=}
     dev: false
@@ -2990,12 +2934,6 @@ packages:
     resolution: {integrity: sha1-caUMhCnfync8kqOQpKA7OfzVHT4=}
     engines: {node: '>=0.10.0'}
     dev: false
-
-  /is-reference/1.2.1:
-    resolution: {integrity: sha512-U82MsXXiFIrjCK4otLT+o2NA2Cd2g5MLoOVXUZjIOhLurrRxpEXzI8O0KZHr3IjLvlAH1kTPYSuqer5T9ZVBKQ==}
-    dependencies:
-      '@types/estree': 0.0.51
-    dev: true
 
   /is-regex/1.1.4:
     resolution: {integrity: sha512-kvRdxDsxZjhzUX07ZnLydzS1TU/TJlTUHHY4YLL87e37oUA49DfkLqgy+VjFocowy29cKvcSiu+kIv728jTTVg==}
@@ -3119,10 +3057,6 @@ packages:
     hasBin: true
     dependencies:
       minimist: 1.2.6
-    dev: true
-
-  /jsonc-parser/3.0.0:
-    resolution: {integrity: sha512-fQzRfAbIBnR0IQvftw9FJveWiHp72Fg20giDrHz6TdfB12UH/uue0D3hm57UB5KgAVuniLMCaS8P1IMj9NR7cA==}
     dev: true
 
   /jsonfile/2.4.0:
@@ -3256,19 +3190,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
-    dev: true
-
-  /magic-string/0.25.9:
-    resolution: {integrity: sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==}
-    dependencies:
-      sourcemap-codec: 1.4.8
-    dev: true
-
-  /magic-string/0.26.2:
-    resolution: {integrity: sha512-NzzlXpclt5zAbmo6h6jNc8zl2gNRGHvmsZW4IvZhTC4W7k4OlLP+S5YLussa/r3ixNT66KOQfNORlXHSOy/X4A==}
-    engines: {node: '>=12'}
-    dependencies:
-      sourcemap-codec: 1.4.8
     dev: true
 
   /make-dir/1.3.0:
@@ -3901,68 +3822,6 @@ packages:
     dependencies:
       glob: 7.2.3
 
-  /rollup-plugin-commonjs/10.1.0:
-    resolution: {integrity: sha512-jlXbjZSQg8EIeAAvepNwhJj++qJWNJw1Cl0YnOqKtP5Djx+fFGkp3WRh+W0ASCaFG5w1jhmzDxgu3SJuVxPF4Q==}
-    deprecated: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-commonjs.
-    peerDependencies:
-      rollup: '>=1.12.0'
-    dependencies:
-      estree-walker: 0.6.1
-      is-reference: 1.2.1
-      magic-string: 0.25.9
-      resolve: 1.22.0
-      rollup-pluginutils: 2.8.2
-    dev: true
-
-  /rollup-plugin-dts/4.2.2_typescript@4.7.2:
-    resolution: {integrity: sha512-A3g6Rogyko/PXeKoUlkjxkP++8UDVpgA7C+Tdl77Xj4fgEaIjPSnxRmR53EzvoYy97VMVwLAOcWJudaVAuxneQ==}
-    engines: {node: '>=v12.22.11'}
-    peerDependencies:
-      rollup: ^2.55
-      typescript: ^4.1
-    dependencies:
-      magic-string: 0.26.2
-      typescript: 4.7.2
-    optionalDependencies:
-      '@babel/code-frame': 7.16.7
-    dev: true
-
-  /rollup-plugin-esbuild/4.9.1_esbuild@0.13.15:
-    resolution: {integrity: sha512-qn/x7Wz9p3Xnva99qcb+nopH0d2VJwVnsxJTGEg+Sh2Z3tqQl33MhOwzekVo1YTKgv+yAmosjcBRJygMfGrtLw==}
-    engines: {node: '>=12'}
-    peerDependencies:
-      esbuild: '>=0.10.1'
-      rollup: ^1.20.0 || ^2.0.0
-    dependencies:
-      '@rollup/pluginutils': 4.2.1
-      debug: 4.3.4
-      es-module-lexer: 0.9.3
-      esbuild: 0.13.15
-      joycon: 3.1.1
-      jsonc-parser: 3.0.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
-  /rollup-plugin-node-resolve/5.2.0:
-    resolution: {integrity: sha512-jUlyaDXts7TW2CqQ4GaO5VJ4PwwaV8VUGA7+km3n6k6xtOEacf61u0VXwN80phY/evMcaS+9eIeJ9MOyDxt5Zw==}
-    deprecated: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-node-resolve.
-    peerDependencies:
-      rollup: '>=1.11.0'
-    dependencies:
-      '@types/resolve': 0.0.8
-      builtin-modules: 3.3.0
-      is-module: 1.0.0
-      resolve: 1.22.0
-      rollup-pluginutils: 2.8.2
-    dev: true
-
-  /rollup-pluginutils/2.8.2:
-    resolution: {integrity: sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==}
-    dependencies:
-      estree-walker: 0.6.1
-    dev: true
-
   /rollup/2.74.1:
     resolution: {integrity: sha512-K2zW7kV8Voua5eGkbnBtWYfMIhYhT9Pel2uhBk2WO5eMee161nPze/XRfvEQPFYz7KgrCCnmh2Wy0AMFLGGmMA==}
     engines: {node: '>=10.0.0'}
@@ -4112,10 +3971,6 @@ packages:
     engines: {node: '>= 8'}
     dependencies:
       whatwg-url: 7.1.0
-    dev: true
-
-  /sourcemap-codec/1.4.8:
-    resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
     dev: true
 
   /spdx-correct/3.1.1:
