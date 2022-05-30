@@ -124,6 +124,13 @@ export default async function buildTemplate(
             continue;
           }
 
+          if (file === "_github") {
+            // eslint-disable-next-line functional/immutable-data
+            files[".github"] = files[file];
+            // eslint-disable-next-line functional/immutable-data
+            delete files[file];
+          }
+
           if (file.endsWith(".hbs") || file.endsWith(".handlebars")) {
             // compile
             const compiled = Handlebars.compile(contents.toString())({
