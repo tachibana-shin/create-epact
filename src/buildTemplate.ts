@@ -20,10 +20,10 @@ const MetaFiles = [
 ];
 
 Handlebars.registerHelper("if_eq", (a, b, opts) => {
-  return a == b ? opts.fn() : opts.invert();
+  return a == b ? opts.fn() : opts.inverse();
 });
 Handlebars.registerHelper("if_ne", (a, b, opts) => {
-  return a != b ? opts.fn() : opts.invert();
+  return a != b ? opts.fn() : opts.inverse();
 });
 
 const TypeAlias: Record<string, PromptType> = {
@@ -43,6 +43,8 @@ export default async function buildTemplate(
     prompts?: Record<string, Omit<PromptObject, "name">>;
     // eslint-disable-next-line functional/prefer-readonly-type
     filters?: Record<string, string>;
+    // eslint-disable-next-line functional/prefer-readonly-type
+    description?: string;
   } = metaFile
     ? metaFile.endsWith(".json")
       ? await readFile(metaFile, "utf8")
@@ -110,8 +112,8 @@ export default async function buildTemplate(
       .use((files, metalsmith, callback) => {
         const localMetadata = metalsmith.metadata();
 
-        // eslint-disable-next-line functional/no-loop-statement
-        for (const [file, { contents }] of Object.entries(files)) {
+        // eslint-disable-next-line functional/no-loop-statement, functional/no-let, prefer-const
+        for (let [file, { contents }] of Object.entries(files)) {
           if (
             file === metaFileBasename ||
             ignore.some((match) =>
@@ -127,10 +129,12 @@ export default async function buildTemplate(
           }
 
           if (file.startsWith("_github/")) {
+            const newFile = join(".github", relative("_github", file))
             // eslint-disable-next-line functional/immutable-data
-            files[join(".github", relative("_github", file))] = files[file];
+            files[newFile] = files[file];
             // eslint-disable-next-line functional/immutable-data
             delete files[file];
+            file = newFile
           }
 
           if (file.endsWith(".hbs") || file.endsWith(".handlebars")) {
@@ -138,9 +142,10 @@ export default async function buildTemplate(
             spinRender.info(chalk.gray("render file: " + file));
 
             const compiled = Handlebars.compile(contents.toString())({
-              extend,
+              ...extend,
               ...answers,
               localMetadata,
+              description: metadata.description ?? extend.description
             });
 
             // eslint-disable-next-line functional/immutable-data

@@ -48,6 +48,7 @@ async function getMetaTemplate(templateName?: string): Promise<DataRepo> {
       spinFetchInfoRepo.stop();
 
       return data;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       if (err?.response.status === 404) {
         spinFetchInfoRepo.fail(
@@ -69,7 +70,7 @@ async function getMetaTemplate(templateName?: string): Promise<DataRepo> {
     )
     .then((res) => {
       spinner.stop();
-      return res.data.filter(repo => {
+      return res.data.filter((repo) => {
         if (repo.topics.includes("epact-ignore")) return false;
 
         return true;
@@ -154,6 +155,13 @@ async function createEpactProject(
 
   const pkgManager = await getPkgManager();
 
+  const [name, email] = await Promise.all([
+    execPromise("git config --get user.name").catch(() => "unknown"),
+    execPromise("git config --get user.email").catch(
+      () => "privacy@github.com"
+    ),
+  ]);
+
   await buildTemplate(dirTemplate, pathToProject, {
     name: projectName,
     pkgName: limax(projectName),
@@ -161,13 +169,13 @@ async function createEpactProject(
     description: template.description,
     pkgManager,
     gitUser: {
-      name: await execPromise("git config --get user.name").catch(
-        () => "unknown"
-      ),
-      email: await execPromise("git config --get user.email").catch(
-        () => "privacy@github.com"
-      ),
+      name,
+      email,
+      username:
+        (await getUsernameGithub(email).catch(() => void 0)) ||
+        name.replace(/\s/g, "-"),
     },
+    FullYear: new Date().getFullYear(),
   });
 
   console.log(`Scaffolding project in ${pathToProject}`);
@@ -181,7 +189,7 @@ function execPromise(shell: string) {
   return new Promise<string>((resolve, reject) => {
     exec(shell, (err, stdout) => {
       if (err) reject(err);
-      else resolve(stdout);
+      else resolve(stdout.trim());
     });
   });
 }
@@ -200,4 +208,15 @@ async function getPkgManager() {
   if (await existsCommand("yarn -v")) return "yarn";
 
   return "npm";
+}
+async function getUsernameGithub(email: string): Promise<string | void> {
+  if (email.endsWith("@users.noreply.github.com")) {
+    return email.match(/\d+\+([^@]+)@/)?.[1];
+  }
+
+  return await axios
+    .get(`https://api.github.com/search/users?q=${email}`)
+    .then(({ data }) => {
+      return data.items[0]?.login;
+    });
 }
