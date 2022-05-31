@@ -31,6 +31,8 @@ const TypeAlias: Record<string, PromptType> = {
   checkbox: "multiselect",
 };
 
+const rParams = /(?:\{\{[^}]+\}\}){1}?/;
+
 export default async function buildTemplate(
   template: string,
   to: string,
@@ -129,12 +131,28 @@ export default async function buildTemplate(
           }
 
           if (file.startsWith("_github/")) {
-            const newFile = join(".github", relative("_github", file))
+            const newFile = join(".github", relative("_github", file));
             // eslint-disable-next-line functional/immutable-data
             files[newFile] = files[file];
             // eslint-disable-next-line functional/immutable-data
             delete files[file];
-            file = newFile
+            file = newFile;
+          }
+
+          if (rParams.test(file)) {
+            // parse
+            const newFile = Handlebars.compile(file)({
+              ...extend,
+              ...answers,
+              localMetadata,
+              description: metadata.description ?? extend.description,
+            })
+
+            // eslint-disable-next-line functional/immutable-data
+            files[newFile] = files[file];
+            // eslint-disable-next-line functional/immutable-data
+            delete files[file];
+            file = newFile;
           }
 
           if (file.endsWith(".hbs") || file.endsWith(".handlebars")) {
@@ -145,7 +163,7 @@ export default async function buildTemplate(
               ...extend,
               ...answers,
               localMetadata,
-              description: metadata.description ?? extend.description
+              description: metadata.description ?? extend.description,
             });
 
             // eslint-disable-next-line functional/immutable-data
